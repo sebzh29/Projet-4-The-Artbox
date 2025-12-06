@@ -5,7 +5,8 @@ $db = connectDB();
 $postData = $_POST;
 
 if(empty($postData['titre']) 
-  || empty($postData['artiste']) 
+  || empty($postData['artiste'])
+  || empty($postData['description']) 
   || empty($postData['image']) 
   || strlen($postData['description']) < 3
   || !filter_var($postData['image'], FILTER_VALIDATE_URL))
