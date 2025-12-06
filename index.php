@@ -1,6 +1,14 @@
 <?php
-    require 'header.php';
-    require 'oeuvres.php';
+    require 'header.php';   
+
+// Connexion a la BDD
+    require 'bdd.php';
+    $db = connectDB();
+
+// Récupération des oeuvres depuis le serveur BDD    
+    $stmt = $db->prepare("SELECT * FROM oeuvres");
+    $stmt->execute();
+    $oeuvres = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div id="liste-oeuvres">
     <?php foreach($oeuvres as $oeuvre): ?>
@@ -12,5 +20,6 @@
             </a>
         </article>
     <?php endforeach; ?>
-</div>
+</div>   
+    
 <?php require 'footer.php'; ?>
