@@ -1,4 +1,6 @@
 <?php
+require 'bdd.php';
+$db = connectDB();
 
 $postData = $_POST;
 
@@ -18,4 +20,10 @@ if(empty($postData['titre'])
     $image = htmlspecialchars($postData['image']);
     $description = htmlspecialchars($postData['description']);
   }
+
+$insert = $db->prepare("INSERT INTO oeuvres (titre, artiste, image, description) VALUES (?, ?, ?, ?)");
+$insert->execute([$titre, $artiste, $image, $description]);
+
+header('Location: oeuvre.php?id='.$db->lastInsertId()); 
+
 ?>
