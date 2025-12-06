@@ -1,8 +1,8 @@
 <?php
     require 'header.php';   
-
-// Connexion a la BDD
     require 'bdd.php';
+
+// Connexion a la BDD    
     $db = connectDB();
 
 // Récupération des oeuvres depuis le serveur BDD    
